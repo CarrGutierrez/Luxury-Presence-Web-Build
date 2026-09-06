@@ -26,7 +26,7 @@ let isTransitioning = false;
 
 // Initialize page
 document.addEventListener("DOMContentLoaded", function () {
-  initStaticHero();
+  initCarousel();
   initPhotoGallery();
 
   // Only initialize venues if the element exists
@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
     renderVenues();
     setupFilters();
   }
+
+  startSlideshow();
 });
 
 // Initialize static hero image (no carousel)
@@ -101,7 +103,7 @@ function createSlideHTML(slide, dataId) {
                         <button class="btn-cta-primary" onclick="viewListings()">View listings</button>
                         <button class="btn-cta-secondary" onclick="contactMarci()">Contact Marci</button>
                     </div>
-                    <button class="btn-cta-mobile" onclick="contactMarci()">Call now</button>
+                    <button class="btn-cta-mobile" onclick="contactMarci()">Call Marci</button>
                     <p class="hero-tagline">Helping you buy, sell, and love where you live</p>
                 </div>
             </div>
