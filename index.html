@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marci Metzger - Pahrump Realtor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav">
+          <div class="logo">
+            <img src="assets/images/logo.png" alt="Logo" />
+          </div>
+          <button class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Slider - Center Mode Infinite Carousel -->
+    <section class="hero-slider">
+      <div class="carousel-viewport">
+        <button class="slider-btn prev" onclick="changeSlide(-1)">‹</button>
+        <button class="slider-btn next" onclick="changeSlide(1)">›</button>
+
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Slides will be dynamically generated with clones for infinite loop -->
+        </div>
+      </div>
+      
+      <!-- Search Bar -->
+      <div class="search-card-wrapper">
+        <div class="container">
+          <div class="search-bar-container">
+            <div class="search-pill">
+              <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+              
+              <input type="text" class="search-main-input" placeholder="Search by city, neighborhood, or address" />
+              
+              <button class="more-filters-btn" onclick="toggleFilters()">
+                More filters
+                <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              
+              <button class="btn-search-pill">Search</button>
+            </div>
+            
+            <div class="filters-panel" id="filtersPanel">
+              <div class="filters-grid">
+                <div class="search-field search-field-brown">
+                  <label for="property-type-expanded">Type</label>
+                  <select id="property-type-expanded">
+                    <option value="">Any</option>
+                    <option value="single-family">Single Family</option>
+                    <option value="condo">Condo</option>
+                    <option value="townhouse">Townhouse</option>
+                    <option value="land">Land</option>
+                  </select>
+                </div>
+                
+                <div class="search-field search-field-blue">
+                  <label for="bedrooms-expanded">Bedrooms</label>
+                  <select id="bedrooms-expanded">
+                    <option value="">Any number</option>
+                    <option value="1">1+</option>
+                    <option value="2">2+</option>
+                    <option value="3">3+</option>
+                    <option value="4">4+</option>
+                    <option value="5">5+</option>
+                  </select>
+                </div>
+                
+                <div class="search-field search-field-blue">
+                  <label for="baths-expanded">Baths</label>
+                  <select id="baths-expanded">
+                    <option value="">Any number</option>
+                    <option value="1">1+</option>
+                    <option value="2">2+</option>
+                    <option value="3">3+</option>
+                    <option value="4">4+</option>
+                  </select>
+                </div>
+                
+                <div class="search-field search-field-purple">
+                  <label for="min-price-expanded">Min Price</label>
+                  <input type="text" id="min-price-expanded" placeholder="$0" />
+                </div>
+                
+                <div class="search-field search-field-purple">
+                  <label for="max-price-expanded">Max Price</label>
+                  <input type="text" id="max-price-expanded" placeholder="No max" />
+                </div>
+                
+                <div class="search-field search-field-blue">
+                  <label for="sort-by-expanded">Sort By</label>
+                  <select id="sort-by-expanded">
+                    <option value="newest">Newest</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="beds">Bedrooms</option>
+                    <option value="baths">Bathrooms</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Realtor Section -->
+    <section class="about-realtor">
+      <div class="realtor-content">
+        <div class="realtor-identity">
+          <div class="realtor-image">
+            <img src="assets/images/MARCI METZGER.png" alt="Marci Metzger" />
+          </div>
+          <div class="realtor-info">
+            <h2 class="realtor-name">Marci Metzger</h2>
+            <p class="realtor-title">Realtor for nearly 3 decades</p>
+          </div>
+        </div>
+        <div class="realtor-contact">
+          <a href="tel:206-919-6886" class="realtor-phone">
+            <svg
+              class="phone-icon"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path>
+            </svg>
+            206-919-6886
+          </a>
+          <button class="btn-call-me" onclick="callNow()">Call Me →</button>
+        </div>
+      </div>
+
+      
+    </section>
+
+    <!-- Realtor Highlights Section -->
+    <section class="realtor-highlights">
+      <div class="container">
+        <!-- Row 1: Top Residential Sales -->
+        <div class="highlight-row">
+          <div class="highlight-image">
+            <img src="assets/images/house 1.png" alt="Luxury Kitchen" />
+          </div>
+          <div class="highlight-content">
+            <h3 class="highlight-heading">
+              Top residential sales, last 5 years
+            </h3>
+            <div class="stats-row">
+              <div class="stat-item">
+                <div class="stat-number">90+</div>
+                <div class="stat-label">Clients in 2021</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">$28.5M</div>
+                <div class="stat-label">Closed in sales</div>
+              </div>
+            </div>
+            <p class="highlight-text">
+              Our team works hard every day to grow and learn, so we can keep
+              excelling in this market. Our clients deserve our best, and we
+              make sure our best gets better every year.
+            </p>
+          </div>
+        </div>
+
+        <!-- Row 2: Don't Just List It -->
+        <div class="highlight-row highlight-row-reverse">
+          <div class="highlight-image">
+            <img src="assets/images/house 3.png" alt="Beautiful Home" />
+          </div>
+          <div class="highlight-content">
+            <h3 class="highlight-heading">Don't Just List It... Market It!</h3>
+            <p class="highlight-text">
+              Marketing your home effectively means reaching the right buyers at
+              the right time. We use professional photography, strategic digital
+              advertising, and targeted outreach to ensure your property stands
+              out in today's competitive market.
+            </p>
+          </div>
+        </div>
+
+        <!-- Row 3: Guide to Buyers -->
+        <div class="highlight-row">
+          <div class="highlight-image">
+            <img src="assets/images/key.png  " alt="Keys to New Home" />
+          </div>
+          <div class="highlight-content">
+            <h3 class="highlight-heading">Guide to Buyers</h3>
+            <p class="highlight-text">
+              Buying a home is one of the biggest decisions you'll make. From
+              navigating offers to closing the deal, we're here to guide you
+              through every step of the process with expertise and care.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications Bar -->
+      <div class="certifications-bar">
+        <div class="certification-item">
+          <img src="assets/images/ridge.png" alt="ridge" />
+        </div>
+        <div class="certification-item">
+          <img src="assets/images/equalhousing.png" alt="Equal Housing" />
+        </div>
+        <div class="certification-item">
+          <img src="assets/images/realtor.png" alt="realtor" />
+        </div>
+        <div class="certification-item">
+          <img src="assets/images/pahrump.png" alt="Pahrump" />
+        </div>
+          
+    </section>
+
+    <!-- Featured Listings Section -->
+    <section class="featured-listings">
+      <div class="container">
+        <h2 class="section-title-centered">Featured listings</h2>
+        
+        <div class="listings-grid">
+          <!-- Listing Card 1 -->
+          <div class="listing-card">
+            <div class="listing-image">
+              <span class="listing-badge">Active</span>
+              <img src="assets/images/1st.jpg" alt="Featured Property 1" />
+            </div>
+            <div class="listing-info">
+              <div class="listing-price">$1,850,000</div>
+              <div class="listing-address">4751 W Adkisson Street, Pahrump, NV</div>
+              <div class="listing-stats">
+                <span>4 beds</span>
+                <span>5 baths</span>
+                <span>5,530 sq. ft</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Listing Card 2 -->
+          <div class="listing-card">
+            <div class="listing-image">
+              <span class="listing-badge">Active</span>
+              <img src="assets/images/2nd.jpg" alt="Featured Property 2" />
+            </div>
+            <div class="listing-info">
+              <div class="listing-price">$1,350,000</div>
+              <div class="listing-address">2221 W Windsong Lane, Pahrump, NV</div>
+              <div class="listing-stats">
+                <span>3 beds</span>
+                <span>3 baths</span>
+                <span>1,876 sq. ft</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Listing Card 3 -->
+          <div class="listing-card">
+            <div class="listing-image">
+              <span class="listing-badge">Active</span>
+              <img src="assets/images/3rd.jpg " alt="Featured Property 3" />
+            </div>
+            <div class="listing-info">
+              <div class="listing-price">$1,295,000</div>
+              <div class="listing-address">4190 N Equus Court, Pahrump, NV</div>
+              <div class="listing-stats">
+                <span>3 beds</span>
+                <span>3 baths</span>
+                <span>2,456 sq. ft</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-show-listings">Show all listings</button>
+      </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="photo-gallery">
+      <div class="container">
+        <h2 class="section-title-centered">Photo gallery</h2>
+        
+        <div class="gallery-viewer">
+          <!-- Peek image left -->
+          <div class="gallery-peek gallery-peek-left" onclick="changeGalleryImage(-1)">
+            <img id="peekLeft" src="" alt="Previous" />
+          </div>
+          
+          <!-- Main image display -->
+          <div class="gallery-main">
+            <img id="galleryMainImage" src="assets/images/house 1.png" alt="Gallery photo" />
+            <div class="gallery-caption" id="galleryCaption">Clubhouse and tennis courts</div>
+          </div>
+          
+          <!-- Peek image right -->
+          <div class="gallery-peek gallery-peek-right" onclick="changeGalleryImage(1)">
+            <img id="peekRight" src="" alt="Next" />
+          </div>
+        </div>
+        
+        <!-- Thumbnail strip -->
+        <div class="gallery-thumbnails" id="galleryThumbnails">
+          <!-- Thumbnails will be generated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section class="our-services">
+      <div class="container">
+        <h2 class="section-title-centered">Our Services</h2>
+        
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card">
+            <div class="service-image">
+              <img src="assets/images/12.png" alt="Real Estate Done Right" />
+            </div>
+            <h3 class="service-heading">Real Estate Done Right</h3>
+            <p class="service-text">
+              Nervous about your property adventure? Don’t be. Whether you're getting ready to buy or sell your residence, 
+              looking at investment properties, or just curious about the markets, 
+              our team ensures you get the best experience possible!
+            </p>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card">
+            <div class="service-image">
+              <img src="assets/images/house 3.png" alt="Commercial & Residential" />
+            </div>
+            <h3 class="service-heading">Commercial & Residential</h3>
+            <p class="service-text">
+              Large or small, condo or mansion, we can find it and get at the price that's right. 
+              Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. 
+              Happy to help you find where to put you hard-earned dollars.
+            </p>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card">
+            <div class="service-image">
+              <img src="assets/images/11.png" alt="Rely on Expertise" />
+            </div>
+            <h3 class="service-heading">Rely on Expertise</h3>
+            <p class="service-text">
+              If you have questions about affordability, credit, and loan options, 
+              trust us to connect you with the right people to get the answers you need in a timely fashion. 
+              We make sure you feel confident and educated every step of the way.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="#about">About us</a>
+            <a href="#schedule">How to book</a>
+            <a href="#venues">Recent venues</a>
+            <a href="#terms">Terms and Conditions</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-text">
+            <p>
+              Find the perfect venue for your wedding, corporate event, or
+              special celebration. Premium locations with exceptional service.
+            </p>
+          </div>
+          <div class="footer-logo">
+            <img src="assets/images/logo.png" alt="Logo" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
