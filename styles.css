@@ -60,6 +60,8 @@ h1, h2, h3, h4, h5, h6,
     gap: 5px;
     position: absolute;
     left: 20px;
+    z-index: 110;
+    padding: 10px;
 }
 
 .menu-toggle span {
@@ -94,11 +96,11 @@ h1, h2, h3, h4, h5, h6,
     z-index: 1;
 }
 
-/* Hero Slider - Center Mode Infinite Carousel */
+/* Hero Section - Static Single Image */
 .hero-slider {
     position: relative;
     background: #fff;
-    padding: 0 0 100px 0;
+    padding: 0;
 }
 
 .carousel-viewport {
@@ -111,23 +113,15 @@ h1, h2, h3, h4, h5, h6,
 .carousel-track {
     display: flex;
     align-items: center;
-    gap: 16px;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    justify-content: center;
     position: relative;
-    left: 50%;
-}
-
-.carousel-track.no-transition {
-    transition: none;
 }
 
 .slide {
-    flex: 0 0 80%;
-    max-width: 80%;
-    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    opacity: 0.4;
-    transform: scale(0.92);
+    width: 100%;
+    max-width: 100%;
+    opacity: 1;
+    transform: scale(1);
     position: relative;
 }
 
@@ -142,7 +136,7 @@ h1, h2, h3, h4, h5, h6,
     width: 100%;
     height: 600px;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 0;
 }
 
 .slide-image-wrapper::after {
@@ -255,6 +249,11 @@ h1, h2, h3, h4, h5, h6,
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
+/* Mobile-only call button (hidden by default, shown at 640px) */
+.btn-cta-mobile {
+    display: none;
+}
+
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -268,6 +267,7 @@ h1, h2, h3, h4, h5, h6,
     transition: color 0.3s;
     line-height: 1;
     padding: 1rem;
+    display: none; /* Hidden - no carousel */
 }
 
 .slider-btn:hover {
@@ -284,16 +284,16 @@ h1, h2, h3, h4, h5, h6,
 
 /* Search Bar */
 .search-card-wrapper {
-    position: absolute;
-    bottom: 50px;
-    left: 0;
-    right: 0;
-    z-index: 15;
+    position: relative;
+    background: #ffffff;
+    padding: 2rem 0;
+    margin: 0;
 }
 
 .search-bar-container {
     max-width: 1100px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .search-pill {
@@ -308,6 +308,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #666;
     flex-shrink: 0;
     margin-right: 4px;
@@ -463,11 +466,7 @@ h1, h2, h3, h4, h5, h6,
 
 @media (max-width: 968px) {
     .hero-slider {
-        padding: 0 0 90px 0;
-    }
-
-    .search-card-wrapper {
-        bottom: -70px;
+        padding: 0;
     }
 
     .carousel-track {
@@ -533,56 +532,95 @@ h1, h2, h3, h4, h5, h6,
 }
 
 @media (max-width: 640px) {
+    .header {
+        padding: 1rem 0 0;
+    }
+
+    .nav {
+        padding: 0 0 1rem;
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .menu-toggle {
+        left: 10px;
+        top: 1rem;
+        z-index: 110;
+        padding: 10px;
+    }
+
+    .menu-toggle span {
+        background: #1a1a1a;
+        height: 2.5px;
+        width: 22px;
+    }
+
     .hero-slider {
         padding: 0 0 80px 0;
     }
 
     .search-card-wrapper {
         bottom: -60px;
-    }
-
-    .carousel-track {
-        gap: 10px;
+        padding: 0 12px;
     }
     
     .slide {
-        flex: 0 0 92%;
-        max-width: 92%;
+        width: 100%;
+        max-width: 100%;
     }
     
     .slide-image-wrapper {
-        height: 350px;
+        height: 550px;
+    }
+    
+    .hero-overlay {
+        width: 85%;
+        padding: 0 15px;
     }
     
     .hero-subtitle {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         letter-spacing: 2px;
-        margin-bottom: 1rem;
+        margin-bottom: 1.2rem;
     }
     
     .hero-title {
-        font-size: 2.2rem;
-        letter-spacing: 3px;
-        margin-bottom: 1.8rem;
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+        margin-bottom: 2rem;
     }
     
-    .cta-buttons {
-        flex-direction: column;
-        gap: 1rem;
+    /* Hide desktop CTA buttons on mobile */
+    .cta-buttons .btn-cta-primary,
+    .cta-buttons .btn-cta-secondary {
+        display: none;
     }
     
-    .btn-cta-primary,
-    .btn-cta-secondary {
-        padding: 1rem 2rem;
-        font-size: 0.8rem;
-        letter-spacing: 1.5px;
-        width: 100%;
-        max-width: 280px;
-    }
-    
+    /* Hide desktop tagline on mobile */
     .hero-tagline {
-        font-size: 0.9rem;
-        margin-top: 1.5rem;
+        display: none;
+    }
+    
+    /* Show mobile call button */
+    .btn-cta-mobile {
+        display: block !important;
+        background: white;
+        color: #1a1a1a;
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        text-transform: uppercase;
+        width: 80%;
+        max-width: 300px;
+        margin: 0 auto;
     }
     
     .slider-btn {
@@ -597,31 +635,57 @@ h1, h2, h3, h4, h5, h6,
         right: 10px;
     }
 
+    /* Simplified search bar for mobile */
     .search-pill {
-        padding: 18px;
+        padding: 12px 16px;
+        border-radius: 50px;
+        gap: 8px;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .search-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        order: 0;
+        margin: 0;
+        margin-right: 8px;
+        flex-shrink: 0;
+        align-self: center;
+        width: 18px;
+        height: 18px;
     }
     
     .search-main-input {
-        padding: 10px 0;
+        order: 1;
+        flex: 1;
+        padding: 10px 8px;
+        font-size: 14px;
+        border: none;
+        border-right: none;
+        border-bottom: none;
+        margin: 0;
+        min-width: 0;
     }
 
+    /* Hide "More filters" button on mobile */
     .more-filters-btn {
-        font-size: 13px;
-        padding: 12px 14px;
+        display: none;
     }
 
     .btn-search-pill {
-        width: 100%;
-        padding: 14px 24px;
+        order: 2;
+        padding: 10px 20px;
+        font-size: 13px;
+        border-radius: 50px;
+        width: auto;
+        flex-shrink: 0;
     }
 
+    /* Hide filters panel on mobile */
     .filters-panel {
-        padding: 22px 18px;
-    }
-
-    .filters-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        display: none !important;
     }
 }
 
@@ -1698,19 +1762,19 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .footer-links a {
-    color: #020202;
+    color: #ffffff;
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: #000000;
+    color: #e8e8e8;
 }
 
 .footer-text p {
     font-size: 0.9rem;
-    color: #000000;
+    color: #ffffff;
     line-height: 1.7;
 }
 
@@ -1724,13 +1788,9 @@ h1, h2, h3, h4, h5, h6,
 
 /* Responsive */
 @media (max-width: 968px) {
-    .carousel-track {
-        gap: 12px;
-    }
-    
     .slide {
-        flex: 0 0 90%;
-        max-width: 90%;
+        width: 100%;
+        max-width: 100%;
     }
     
     .slide-image-wrapper {
@@ -1801,13 +1861,9 @@ h1, h2, h3, h4, h5, h6,
         font-size: 0.85rem;
     }
     
-    .carousel-track {
-        gap: 10px;
-    }
-    
     .slide {
-        flex: 0 0 92%;
-        max-width: 92%;
+        width: 100%;
+        max-width: 100%;
     }
     
     .slide-image-wrapper {
@@ -1898,5 +1954,49 @@ h1, h2, h3, h4, h5, h6,
     
     .step-card:last-child {
         border-bottom: none;
+    }
+
+    /* Mobile Footer */
+    .footer {
+        padding: 2rem 0 1.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        gap: 0.6rem;
+        align-items: center;
+    }
+
+    .footer-links a {
+        font-size: 0.9rem;
+        color: #ffffff;
+    }
+
+    .footer-links a:hover {
+        color: #e8e8e8;
+    }
+
+    .footer-text p {
+        font-size: 0.85rem;
+        color: #ffffff;
+        line-height: 1.6;
+    }
+
+    .footer-logo {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-logo img {
+        height: 60px;
+        width: auto;
     }
 }

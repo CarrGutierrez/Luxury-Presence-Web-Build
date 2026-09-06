@@ -26,7 +26,7 @@ let isTransitioning = false;
 
 // Initialize page
 document.addEventListener("DOMContentLoaded", function () {
-  initCarousel();
+  initStaticHero();
   initPhotoGallery();
 
   // Only initialize venues if the element exists
@@ -34,11 +34,35 @@ document.addEventListener("DOMContentLoaded", function () {
     renderVenues();
     setupFilters();
   }
-
-  startSlideshow();
 });
 
-// Initialize infinite carousel with cloned slides
+// Initialize static hero image (no carousel)
+function initStaticHero() {
+  const track = document.getElementById("carouselTrack");
+
+  // Use the first image as the static hero
+  const heroImage = originalSlides[0];
+
+  track.innerHTML = `
+    <div class="slide center">
+      <div class="slide-image-wrapper">
+        <img src="${heroImage.image}" alt="${heroImage.alt}">
+        <div class="hero-overlay">
+          <p class="hero-subtitle">Marci Metzger - The Ridge Realty Group</p>
+          <h1 class="hero-title">Pahrump Realtor</h1>
+          <div class="cta-buttons">
+            <button class="btn-cta-primary" onclick="viewListings()">View listings</button>
+            <button class="btn-cta-secondary" onclick="contactMarci()">Contact Marci</button>
+          </div>
+          <button class="btn-cta-mobile" onclick="contactMarci()">Call marci</button>
+          <p class="hero-tagline">Helping you buy, sell, and love where you live</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Legacy carousel functions (no longer used but kept for compatibility)
 function initCarousel() {
   const track = document.getElementById("carouselTrack");
 
@@ -71,12 +95,13 @@ function createSlideHTML(slide, dataId) {
             <div class="slide-image-wrapper">
                 <img src="${slide.image}" alt="${slide.alt}">
                 <div class="hero-overlay">
-                    <p class="hero-subtitle">Your trusted local expert - THE RIDGE REALTY GROUP </p>
+                    <p class="hero-subtitle">Marci Metzger - The Ridge Realty Group</p>
                     <h1 class="hero-title">Pahrump Realtor</h1>
                     <div class="cta-buttons">
                         <button class="btn-cta-primary" onclick="viewListings()">View listings</button>
                         <button class="btn-cta-secondary" onclick="contactMarci()">Contact Marci</button>
                     </div>
+                    <button class="btn-cta-mobile" onclick="contactMarci()">Call now</button>
                     <p class="hero-tagline">Helping you buy, sell, and love where you live</p>
                 </div>
             </div>
